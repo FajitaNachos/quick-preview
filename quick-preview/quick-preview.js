@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
 			if(jQuery('#save-post').length){
 				jQuery('#save-post').click();	
 			}
-			else if(jQuery('publish').length){
+			else if(jQuery('#publish').length){
 				jQuery('#publish').click();
 			}
 			
