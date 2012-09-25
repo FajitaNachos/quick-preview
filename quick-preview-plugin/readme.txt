@@ -15,7 +15,7 @@ This plugin allows you to quickly save and preview your post using Ctrl-S. You c
 
 == Installation ==
 
-1. Upload the `quick-preview` directory to the `/wp-content/plugins/` directory
+1. Upload the `quick-preview-plugin` directory to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == ChangeLog ==
