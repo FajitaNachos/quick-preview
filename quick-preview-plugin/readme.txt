@@ -2,7 +2,7 @@
 Contributors: FajitaNachos	
 Tags: quick preview, ctrl-s, cmd-s, preview post
 Requires at least: 2.5
-Stable tag: 1.0
+Stable tag: 1.1
 Tested up to: 3.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,11 +15,14 @@ This plugin allows you to quickly save and preview your post using Ctrl-S. You c
 
 == Installation ==
 
-1. Upload the `quick-preview-plugin` directory to the `/wp-content/plugins/` directory
+1. Upload the `quick-preview` directory to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == ChangeLog ==
+1.1 (2012-10-08)
+
+- Fixed bug in visual editor mode
 
 1.0 (2012-09-20)
 ------------------
-1. Plugin Created
+- Plugin created

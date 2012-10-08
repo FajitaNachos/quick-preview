@@ -3,7 +3,7 @@
 Plugin Name: Quick Preview
 Plugin URI: http://github.com/fajitanachos/quick-preview
 Description: Use Ctrl-S to save and preview your post
-Version: 1.0
+Version: 1.1
 Author: FajitaNachos
 Author URI: https://www.fajitanachos.com
  Copyright 2012 FajitaNachos
@@ -29,6 +29,47 @@ add_action('admin_init', 'pass_option_value');
 add_action('admin_print_scripts-post.php', 'load_quick_preview_js');
 add_action('admin_print_scripts-post-new.php', 'load_quick_preview_js');
 add_filter('plugin_action_links_quick-preview/quick-preview.php', 'quick_preview_settings_link' );
+add_filter( 'tiny_mce_before_init', 'visual_editor_save' );
+
+function visual_editor_save( $initArray ) {
+    $initArray['setup'] = <<<JS
+[function(ed) {
+    ed.onKeyDown.add(function(ed, e) {
+	
+        if (document.cookie.indexOf("previewCookie") >= 0){  
+		//expires added for IE
+		document.cookie="previewCookie=true; max-age=0;expires=0;path=/wp-admin/"; 			
+		
+		//quickPreviewOption is set in quick-preview.php  
+		var previewURL = document.getElementById('post-preview');
+		if(quickPreviewOption === 'current'){ 		                                    
+			window.location = previewURL;
+		}
+		if(quickPreviewOption === 'new'){
+			window.open(previewURL,"wp_PostPreview","","true");
+		}
+	}
+       if((e.ctrlKey || e.metaKey) && e.keyCode == 83){
+			//Find #save post if it's a draft. If post is published, #save-post doesn't exist.
+			if(jQuery('#save-post').length){
+				jQuery('#save-post').click();	
+			}
+			else if(jQuery('#publish').length){
+				jQuery('#publish').click();
+			}
+			
+			//Sets a cookie to open the preview on page refresh. Saving a post auotmatically refreshes the page.
+			document.cookie = "previewCookie = true;max-age = 60;path=/wp-admin/";  	
+					
+		}
+    	
+	});
+
+return false;	
+}][0]
+JS;
+    return $initArray;
+}
 
 function register_quick_preview(){
 	wp_register_script('quick_preview',plugins_url('/quick-preview/quick-preview.js'),array('jquery'));

@@ -1,4 +1,4 @@
-jQuery(document).ready(function(){
+jQuery(document).ready(function($){
 	
 	if (document.cookie.indexOf("previewCookie") >= 0){  
 		//expires added for IE
@@ -14,15 +14,15 @@ jQuery(document).ready(function(){
 		}
 	}
 
-	jQuery(document).keydown(function(e){
+	$(document).keydown(function(e){
 		if((e.ctrlKey || e.metaKey) && e.which == 83){
 			
 			//Find #save post if it's a draft. If post is published, #save-post doesn't exist.
-			if(jQuery('#save-post').length){
-				jQuery('#save-post').click();	
+			if($('#save-post').length){
+				$('#save-post').click();	
 			}
-			else if(jQuery('#publish').length){
-				jQuery('#publish').click();
+			else if($('#publish').length){
+				$('#publish').click();
 			}
 			
 			//Sets a cookie to open the preview on page refresh. Saving a post auotmatically refreshes the page.
@@ -31,4 +31,6 @@ jQuery(document).ready(function(){
 		}
 		
 	});	
+	
+	
 });
