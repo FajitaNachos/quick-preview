@@ -3,7 +3,7 @@
 Plugin Name: Quick Preview
 Plugin URI: http://github.com/fajitanachos/quick-preview
 Description: Use Ctrl-S to save and preview your post
-Version: 1.1
+Version: 1.1.1
 Author: FajitaNachos
 Author URI: https://www.fajitanachos.com
  Copyright 2012 FajitaNachos
